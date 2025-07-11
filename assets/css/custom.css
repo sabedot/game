@@ -1,0 +1,70 @@
+:root {
+    --futstream-primary: #0056b3;
+    --futstream-secondary: #28a745;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.site-header {
+    background-color: var(--futstream-primary);
+    color: white;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+.site-footer {
+    background-color: #f8f9fa;
+    padding: 2rem 0;
+}
+
+// Came Card//
+
+.game-card {
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.game-meta i {
+    margin-right: 10px;
+    color: var(--futstream-primary);
+}
+
+.btn-stream {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Estilos para posts */
+.blog-grid .card {
+    transition: all 0.3s ease;
+}
+
+.blog-grid .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.post-categories .badge {
+    margin-bottom: 10px;
+}
+
+.entry-meta i {
+    margin-right: 5px;
+    color: var(--futstream-primary);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .blog-grid .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
