@@ -1,0 +1,895 @@
+/*
+Theme Name: FutStream Theme
+Theme URI: https://example.com/futstream
+Author: Seu Nome
+Author URI: https://example.com
+Description: Um tema WordPress para exibir jogos de futebol e esportes ao vivo.
+Version: 1.0
+Requires at least: 5.0
+Tested up to: 6.0
+Requires PHP: 7.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: futstream
+*/
+
+/* --- Importação de Fontes (Opcional: Google Fonts) --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap');
+
+/* --- Variáveis CSS (Cores e Fontes) --- */
+:root {
+    --primary-color: #007bff;
+    /* Azul vibrante */
+    --secondary-color: #28a745;
+    /* Verde para botões de ação */
+    --dark-color: #343a40;
+    /* Cinza escuro para texto principal */
+    --light-gray: #f8f9fa;
+    /* Fundo claro */
+    --medium-gray: #e9ecef;
+    /* Borda e separadores */
+    --text-color: #495057;
+    /* Cor de texto padrão */
+    --white-color: #ffffff;
+
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+
+    --border-radius: 8px;
+    --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --transition-speed: 0.3s ease;
+}
+
+/* --- Reset Básico e Estilos Globais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-gray);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: var(--dark-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--dark-color);
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- Layout Geral --- */
+.site-content {
+    padding: 60px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    /* Default padding for larger screens */
+}
+
+/* --- Header --- */
+.site-header {
+    background-color: var(--dark-color);
+    /* Fundo escuro para o cabeçalho */
+    color: var(--white-color);
+    padding: 20px 0;
+    box-shadow: var(--box-shadow);
+}
+
+.site-branding {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.site-branding .site-title {
+    margin: 0;
+}
+
+.site-branding .site-title a {
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: 2.8em;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.site-branding .site-description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+
+/* --- Navegação Principal --- */
+.main-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* Allow items to wrap on smaller screens */
+}
+
+.main-navigation ul li {
+    margin: 0 15px;
+}
+
+.main-navigation ul li a {
+    color: var(--white-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.main-navigation ul li a:hover,
+.main-navigation ul li.current-menu-item a {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+/* --- Seções de Conteúdo --- */
+.section-title {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+}
+
+/* --- Lista de Jogos (front-page.php e archive-game.php) --- */
+.game-list,
+.game-archive-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /* Default for larger screens */
+    gap: 30px;
+}
+
+.game-item,
+.game-archive-item {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* Para o link de transmissão */
+}
+
+.game-item:hover,
+.game-archive-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.game-header,
+.entry-header {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 20px;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    text-align: center;
+}
+
+.game-title,
+.entry-title {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.game-title a,
+.entry-title a {
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+.game-championship {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-weight: 500;
+}
+
+.game-details,
+.entry-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-details p,
+.entry-content p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+.game-teams {
+    font-weight: 700;
+    color: var(--dark-color);
+    font-size: 1.4em;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.game-datetime {
+    font-style: italic;
+    color: var(--primary-color);
+    font-size: 1em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.game-transmission,
+.button-watch {
+    display: block;
+    /* Ocupa a largura total */
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1em;
+    text-align: center;
+    margin-top: auto;
+    /* Empurra para o final do card */
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.game-transmission a:hover,
+.button-watch:hover {
+    background-color: #218838;
+    /* Um tom mais escuro de verde */
+    transform: translateY(-2px);
+}
+
+.read-more {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 0.95em;
+    margin-top: 15px;
+    transition: background-color var(--transition-speed);
+}
+
+.read-more:hover {
+    background-color: #0056b3;
+}
+
+/* --- Rodapé --- */
+.site-footer {
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 60px;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.site-info {
+    font-size: 0.95em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- Estilos para a Página de Detalhes do Jogo (single-game.php) - OTIMIZADO --- */
+.single-game-content {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* --- Título do Jogo --- */
+.single-game-content .entry-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.single-game-content .entry-title {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+/* --- Thumbnail do Post (se houver) --- */
+.single-game-content .game-thumbnail {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.single-game-content .game-thumbnail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* --- Informações do Jogo (Data, Local, Transmissão, etc.) --- */
+.single-game-content .game-info {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border-left: 5px solid #3498db;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Seção de Times e Escudos (AJUSTADO PARA ESCUDOS MENORES E NOMES) --- */
+.single-game-content .teams-and-badges-display {
+    display: flex;
+    /* Re-habilita a exibição flex */
+    justify-content: center;
+    /* Centraliza o grupo de times e o "vs" */
+    align-items: center;
+    /* Alinha verticalmente os itens (logos, nomes, vs) */
+    gap: 20px;
+    /* Espaçamento entre os elementos (time1, vs, time2) */
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #e0e0e0;
+    margin-bottom: 15px;
+    flex-wrap: nowrap;
+    /* Tenta manter em uma única linha por padrão */
+}
+
+.single-game-content .team-display {
+    display: flex;
+    flex-direction: column;
+    /* Empilha o escudo e o nome */
+    align-items: center;
+    /* Centraliza o conteúdo (escudo e nome) */
+    text-align: center;
+    flex-shrink: 0;
+    width: 110px;
+    /* Largura fixa para cada bloco de time */
+}
+
+.single-game-content .team-display img {
+    display: block;
+    /* Garante que a imagem seja exibida */
+    width: 70px;
+    /* Tamanho fixo para o escudo */
+    height: 70px;
+    /* Tamanho fixo para o escudo */
+    object-fit: contain;
+    /* Garante que o escudo se ajuste sem distorção */
+    margin: 0 auto 8px auto;
+    /* Centraliza a imagem e adiciona margem inferior */
+}
+
+.single-game-content .team-display .team-name {
+    font-size: 1.2em;
+    /* Tamanho do nome do time */
+    font-weight: bold;
+    color: var(--dark-color);
+    line-height: 1.2;
+    white-space: nowrap;
+    /* Evita que o nome do time quebre em várias linhas */
+    overflow: hidden;
+    /* Oculta o texto que excede a largura */
+    text-overflow: ellipsis;
+    /* Adiciona reticências se o texto for muito longo */
+}
+
+.single-game-content .vs-text {
+    font-size: 2em;
+    /* Tamanho do "vs" um pouco maior */
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 0 15px;
+    flex-shrink: 0;
+}
+
+/* --- Lista de Detalhes do Jogo (Data, Transmissão, etc.) --- */
+.single-game-content .game-details-list p {
+    margin-bottom: 8px;
+    font-size: 1.05em;
+    line-height: 1.4;
+}
+
+.single-game-content .game-details-list strong {
+    color: #2c3e50;
+}
+
+.single-game-content .game-details-list a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.single-game-content .game-details-list a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* --- Botão de Transmissão --- */
+.single-game-content .transmission-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.single-game-content .button-watch {
+    display: inline-block;
+    background-color: #28a745;
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.single-game-content .button-watch:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* --- Descrição do Jogo (the_content) --- */
+.single-game-content .game-description {
+    margin-top: 30px;
+    line-height: 1.6;
+    font-size: 1.05em;
+    border-top: 1px dashed #ddd;
+    padding-top: 20px;
+}
+
+.single-game-content .game-description h2,
+.single-game-content .game-description h3 {
+    color: #2c3e50;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+/* --- Melhores Momentos (Vídeo) --- */
+.single-game-content h3 {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #2c3e50;
+}
+
+.single-game-content .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.single-game-content .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.single-game-content .highlights-link {
+    text-align: center;
+}
+
+.single-game-content .highlights-link a {
+    display: inline-block;
+    background-color: #e67e22;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.single-game-content .highlights-link a:hover {
+    background-color: #d35400;
+}
+
+/* --- Responsividade Geral e Específica (MELHORADA) --- */
+
+/* Breakpoint para telas médias (tablets em paisagem, laptops pequenos) */
+@media (max-width: 992px) {
+    .container {
+        padding: 0 15px;
+        /* Reduz um pouco o padding do container */
+    }
+
+    .site-content {
+        padding: 40px 0;
+    }
+
+    .site-branding .site-title a {
+        font-size: 2.5em;
+        /* Ajusta o título do site */
+    }
+
+    .main-navigation ul li {
+        margin: 0 10px;
+        /* Reduz espaçamento entre itens de navegação */
+    }
+
+    .game-list,
+    .game-archive-list {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        /* Permite cards menores */
+        gap: 25px;
+    }
+
+    .game-item .game-title {
+        font-size: 1.6em;
+        /* Ajusta título do card de jogo */
+    }
+
+    .single-game-content {
+        padding: 30px;
+    }
+
+    .single-game-content .entry-title {
+        font-size: 2.2em;
+        /* Ajusta título da página de jogo */
+    }
+
+    .single-game-content .team-display .team-name {
+        font-size: 1.1em;
+        /* Ajusta o tamanho do nome do time */
+    }
+
+    .single-game-content .vs-text {
+        font-size: 1.8em;
+        /* Ajusta o tamanho do "vs" */
+    }
+}
+
+/* Breakpoint para telas menores (tablets em retrato, smartphones grandes) */
+@media (max-width: 768px) {
+    .site-header {
+        padding: 15px 0;
+        /* Reduz padding do header */
+    }
+
+    .site-branding .site-title a {
+        font-size: 2em;
+        /* Título do site menor */
+    }
+
+    .site-branding .site-description {
+        font-size: 1em;
+        /* Descrição do site menor */
+    }
+
+    .main-navigation ul {
+        flex-direction: column;
+        /* Navegação empilha itens */
+        align-items: center;
+    }
+
+    .main-navigation ul li {
+        margin: 8px 0;
+        /* Espaçamento vertical para itens empilhados */
+    }
+
+    .section-title {
+        font-size: 2em;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+    }
+
+    .section-title::after {
+        width: 60px;
+        /* Linha de destaque menor */
+    }
+
+    .game-list,
+    .game-archive-list {
+        grid-template-columns: 1fr;
+        /* Um card por linha */
+        gap: 20px;
+    }
+
+    .game-item,
+    .game-archive-item {
+        margin-bottom: 0;
+        /* Remove margem extra se grid já tem gap */
+    }
+
+    .game-header {
+        padding: 15px;
+    }
+
+    .game-title {
+        font-size: 1.5em;
+    }
+
+    .game-details {
+        padding: 20px;
+    }
+
+    .game-teams {
+        font-size: 1.3em;
+    }
+
+    .game-datetime {
+        font-size: 1em;
+    }
+
+    .game-transmission,
+    .button-watch {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    /* Single Game Page Specific Adjustments */
+    .single-game-content {
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .single-game-content .entry-title {
+        font-size: 1.8em;
+    }
+
+    .single-game-content .teams-and-badges-display {
+        flex-direction: column;
+        /* Empilha os times em telas menores */
+        gap: 15px;
+    }
+
+    .single-game-content .vs-text {
+        margin: 10px 0;
+        order: 2;
+        /* Garante que o "vs" fique no meio ao empilhar */
+    }
+
+    .single-game-content .home-team-display {
+        order: 1;
+    }
+
+    .single-game-content .away-team-display {
+        order: 3;
+    }
+
+    .single-game-content .team-display {
+        width: auto;
+        /* Remove largura fixa em telas menores para melhor adaptação */
+    }
+
+    .single-game-content .team-display img {
+        width: 60px;
+        /* Escudo menor em telas pequenas */
+        height: 60px;
+    }
+
+    .single-game-content .team-display .team-name {
+        font-size: 1em;
+        /* Ajusta o tamanho do nome do time */
+    }
+
+    .single-game-content .vs-text {
+        font-size: 1.6em;
+        /* Ajusta o tamanho do "vs" */
+    }
+
+    .single-game-content .game-info {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .single-game-content .game-description h2,
+    .single-game-content .game-description h3 {
+        font-size: 1.5em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .single-game-content .video-container {
+        margin-bottom: 15px;
+    }
+}
+
+/* Breakpoint para smartphones pequenos */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 10px;
+        /* Mais padding nas bordas para telas muito pequenas */
+    }
+
+    .site-branding .site-title a {
+        font-size: 1.6em;
+        /* Título ainda menor */
+    }
+
+    .site-branding .site-description {
+        font-size: 0.9em;
+    }
+
+    .main-navigation ul li a {
+        padding: 6px 10px;
+        /* Botões de navegação menores */
+        font-size: 0.9em;
+    }
+
+    .section-title {
+        font-size: 1.8em;
+        margin-bottom: 25px;
+    }
+
+    .game-item .game-title {
+        font-size: 1.4em;
+    }
+
+    .game-details {
+        padding: 15px;
+    }
+
+    .game-teams {
+        font-size: 1.1em;
+    }
+
+    .game-datetime {
+        font-size: 0.9em;
+    }
+
+    .game-transmission,
+    .button-watch {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .single-game-content {
+        padding: 15px;
+    }
+
+    .single-game-content .entry-title {
+        font-size: 1.6em;
+    }
+
+    .single-game-content .team-display img {
+        width: 50px;
+        /* Escudo ainda menor em telas muito pequenas */
+        height: 50px;
+    }
+
+    .single-game-content .team-display .team-name {
+        font-size: 0.9em;
+    }
+
+    .single-game-content .vs-text {
+        font-size: 1.4em;
+    }
+
+    .single-game-content .game-description {
+        font-size: 1em;
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+
+    .single-game-content .highlights-link a {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+}
+
+/* Breakpoint para smartphones muito pequenos (ex: iPhone SE antigo) */
+@media (max-width: 375px) {
+    .site-branding .site-title a {
+        font-size: 1.4em;
+    }
+
+    .main-navigation ul li {
+        margin: 5px 0;
+    }
+
+    .main-navigation ul li a {
+        font-size: 0.85em;
+    }
+
+    .section-title {
+        font-size: 1.6em;
+    }
+
+    .game-title {
+        font-size: 1.3em;
+    }
+
+    .single-game-content .entry-title {
+        font-size: 1.4em;
+    }
+
+    .single-game-content .team-display img {
+        width: 40px;
+        /* Escudo mínimo */
+        height: 40px;
+    }
+
+    .single-game-content .team-display .team-name {
+        font-size: 0.8em;
+    }
+
+    .single-game-content .vs-text {
+        font-size: 1.2em;
+    }
+}
+
+/* Estilos para anúncios em posts */
+.single-top-ad,
+.single-middle-ad,
+.single-bottom-ad {
+    margin: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.single-top-ad img,
+.single-middle-ad img,
+.single-bottom-ad img {
+    max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,317 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FutStream Theme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-07 01:42+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.0; wp-6.8.1; php-7.4.33\n"
+"X-Domain: futstream"
+
+#: functions.php:84
+msgid "Adicionar Novo"
+msgstr ""
+
+#: functions.php:136
+msgid "Adicionar Novo Campeonato"
+msgstr ""
+
+#: functions.php:85
+msgid "Adicionar Novo Jogo"
+msgstr ""
+
+#: functions.php:141
+msgid "Adicionar ou remover campeonatos"
+msgstr ""
+
+#: single-game.php:135
+msgid "Anterior:"
+msgstr ""
+
+#: functions.php:138
+msgid "Atualizar Campeonato"
+msgstr ""
+
+#: functions.php:37
+msgid "Azul Principal"
+msgstr ""
+
+#: functions.php:47
+msgid "Branco"
+msgstr ""
+
+#: functions.php:144
+msgid "Buscar Campeonatos"
+msgstr ""
+
+#: functions.php:90
+msgid "Buscar Jogos"
+msgstr ""
+
+#: functions.php:133
+msgid "Campeonato Pai"
+msgstr ""
+
+#: functions.php:134
+msgid "Campeonato Pai:"
+msgstr ""
+
+#: functions.php:131
+msgid "Campeonatos"
+msgstr ""
+
+#: functions.php:143
+msgid "Campeonatos Populares"
+msgstr ""
+
+#: functions.php:52
+msgid "Cinza Escuro"
+msgstr ""
+
+#. %s: Post title.
+#: index.php:40
+#, php-format
+msgid "Continue lendo<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: functions.php:137
+msgid "Editar Campeonato"
+msgstr ""
+
+#: functions.php:87
+msgid "Editar Jogo"
+msgstr ""
+
+#: functions.php:142
+msgid "Escolher entre os campeonatos mais usados"
+msgstr ""
+
+#. Name of the theme
+msgid "FutStream Theme"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://example.com"
+msgstr ""
+
+#. URI of the theme
+msgid "https://example.com/futstream"
+msgstr ""
+
+#: functions.php:107
+msgid "Informações sobre partidas de futebol"
+msgstr ""
+
+#: functions.php:83 functions.php:106
+msgid "Jogo"
+msgstr ""
+
+#: functions.php:91
+msgid "Jogo Pai:"
+msgstr ""
+
+#: functions.php:82
+msgid "Jogos"
+msgstr ""
+
+#: functions.php:147
+msgid "Lista de campeonatos"
+msgstr ""
+
+#: functions.php:14
+msgid "Menu Principal"
+msgstr ""
+
+#: index.php:73
+msgid "Nada Encontrado"
+msgstr ""
+
+#: functions.php:148
+msgid "Navegação da lista de campeonatos"
+msgstr ""
+
+#: functions.php:146
+msgid "Nenhum campeonato"
+msgstr ""
+
+#: functions.php:145
+msgid "Nenhum campeonato encontrado"
+msgstr ""
+
+#: functions.php:93
+msgid "Nenhum jogo encontrado na lixeira."
+msgstr ""
+
+#: archive-game.php:65 functions.php:92
+msgid "Nenhum jogo encontrado."
+msgstr ""
+
+#: front-page.php:75 front-page.php:154
+msgid "Nenhum jogo futuro encontrado no momento."
+msgstr ""
+
+#: functions.php:86
+msgid "Novo Jogo"
+msgstr ""
+
+#: functions.php:135
+msgid "Novo Nome de Campeonato"
+msgstr ""
+
+#: functions.php:94
+msgctxt ""
+"Overrides the “Featured Image” phrase for this post type. Added in 4.3"
+msgid "Imagem do Jogo"
+msgstr ""
+
+#: functions.php:99
+msgctxt ""
+"Overrides the “Insert into post”/“Insert into page” phrase (used when "
+"inserting media into a post). Added in 4.4"
+msgid "Inserir no jogo"
+msgstr ""
+
+#: functions.php:96
+msgctxt ""
+"Overrides the “Remove featured image” phrase for this post type. Added in 4.3"
+msgid "Remover imagem do jogo"
+msgstr ""
+
+#: functions.php:95
+msgctxt ""
+"Overrides the “Set featured image” phrase for this post type. Added in 4.3"
+msgid "Definir imagem do jogo"
+msgstr ""
+
+#: functions.php:100
+msgctxt ""
+"Overrides the “Uploaded to this post”/“Uploaded to this page” phrase (used "
+"when viewing media attached to a post). Added in 4.4"
+msgid "Enviado para este jogo"
+msgstr ""
+
+#: functions.php:97
+msgctxt ""
+"Overrides the “Use as featured image” phrase for this post type. Added in 4.4"
+msgid "Usar como imagem do jogo"
+msgstr ""
+
+#: index.php:77
+msgid ""
+"Parece que não conseguimos encontrar o que você está procurando. Talvez uma "
+"busca possa ajudar."
+msgstr ""
+
+#: functions.php:80
+msgctxt "Post Type General Name"
+msgid "Jogos"
+msgstr ""
+
+#: functions.php:81
+msgctxt "Post Type Singular Name"
+msgid "Jogo"
+msgstr ""
+
+#: single-game.php:136
+msgid "Próximo:"
+msgstr ""
+
+#: front-page.php:15 front-page.php:93
+msgid "Próximos Jogos"
+msgstr ""
+
+#: header.php:10
+msgid "Pular para o conteúdo"
+msgstr ""
+
+#: index.php:51
+msgid "Páginas:"
+msgstr ""
+
+#: functions.php:101
+msgctxt ""
+"Screen reader text for the filter links on the list table. Added in 4.4"
+msgid "Filtrar lista de jogos"
+msgstr ""
+
+#: functions.php:103
+msgctxt "Screen reader text for the items list. Added in 4.4"
+msgid "Lista de jogos"
+msgstr ""
+
+#: functions.php:102
+msgctxt ""
+"Screen reader text for the pagination links on the list table. Added in 4.4"
+msgid "Navegação da lista de jogos"
+msgstr ""
+
+#: functions.php:140
+msgid "Separar campeonatos com vírgulas"
+msgstr ""
+
+#. Author of the theme
+msgid "Seu Nome"
+msgstr ""
+
+#: functions.php:129
+msgctxt "Taxonomy General Name"
+msgid "Campeonatos"
+msgstr ""
+
+#: functions.php:171
+msgctxt "Taxonomy General Name"
+msgid "Canais"
+msgstr ""
+
+#: functions.php:130
+msgctxt "Taxonomy Singular Name"
+msgid "Campeonato"
+msgstr ""
+
+#: functions.php:172
+msgctxt "Taxonomy Singular Name"
+msgid "Canal"
+msgstr ""
+
+#: functions.php:98
+msgctxt ""
+"The post type archive label used in nav menus. Default “Post Archives”. "
+"Added in 4.4"
+msgid "Arquivos de Jogos"
+msgstr ""
+
+#: functions.php:132
+msgid "Todos os Campeonatos"
+msgstr ""
+
+#: functions.php:89
+msgid "Todos os Jogos"
+msgstr ""
+
+#. Description of the theme
+msgid "Um tema WordPress para exibir jogos de futebol e esportes ao vivo."
+msgstr ""
+
+#: functions.php:139
+msgid "Ver Campeonato"
+msgstr ""
+
+#: archive-game.php:53
+msgid "Ver Detalhes"
+msgstr ""
+
+#: functions.php:88
+msgid "Ver Jogo"
+msgstr ""
+
+#: functions.php:42
+msgid "Verde Futebol"
+msgstr ""
