@@ -1,0 +1,51 @@
+<article id="post-<?php the_ID(); ?>" <?php post_class('card h-100'); ?>>
+    <?php if (has_post_thumbnail()) : ?>
+        <a href="<?php the_permalink(); ?>" class="post-thumbnail">
+            <?php the_post_thumbnail('medium', ['class' => 'card-img-top']); ?>
+        </a>
+    <?php endif; ?>
+
+    <div class="card-body">
+        <header class="entry-header">
+            <?php 
+            // Categorias
+            $categories = get_the_category();
+            if (!empty($categories)) {
+                echo '<div class="post-categories">';
+                foreach ($categories as $category) {
+                    echo '<span class="badge bg-primary me-1">' . 
+                         esc_html($category->name) . 
+                         '</span>';
+                }
+                echo '</div>';
+            }
+            ?>
+
+            <h5 class="card-title entry-title">
+                <a href="<?php the_permalink(); ?>" rel="bookmark">
+                    <?php the_title(); ?>
+                </a>
+            </h5>
+        </header>
+
+        <div class="card-text entry-summary">
+            <?php the_excerpt(); ?>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <div class="entry-meta d-flex justify-content-between">
+            <small class="text-muted">
+                <i class="fas fa-user"></i> 
+                <?php the_author(); ?>
+            </small>
+            <small class="text-muted">
+                <i class="fas fa-calendar"></i> 
+                <?php echo get_the_date(); ?>
+            </small>
+        </div>
+        <a href="<?php the_permalink(); ?>" class="btn btn-primary w-100 mt-2">
+            <?php _e('Leia Mais', 'futstream'); ?>
+        </a>
+    </div>
+</article>
